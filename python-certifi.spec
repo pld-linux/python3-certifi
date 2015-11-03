@@ -51,11 +51,6 @@ project.
 %prep
 %setup -q -n %{module}-%{version}
 
-# setup copy of source in py3 dir
-set -- *
-install -d py3
-cp -a "$@" py3
-
 %build
 %if %{with python2}
 %{__python} setup.py build --build-base build-2 %{?with_tests:test}
@@ -94,9 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.rst
 %{py_sitescriptdir}/%{module}
-%if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/%{module}-%{version}-py*.egg-info
-%endif
 %endif
 
 %if %{with python3}
