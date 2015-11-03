@@ -15,6 +15,7 @@ Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/c/certifi/certifi-%{version}.tar.gz
 # Source0-md5:	323884431b31aa0eccb5f8086d92196b
 URL:		https://certifi.io/
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.612
 %if %{with python2}
 BuildRequires:	python-devel
