@@ -16,7 +16,7 @@ Source0:	https://pypi.python.org/packages/source/c/certifi/certifi-%{version}.ta
 # Source0-md5:	323884431b31aa0eccb5f8086d92196b
 URL:		https://certifi.io/
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.612
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
