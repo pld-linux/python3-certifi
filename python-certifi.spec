@@ -1,32 +1,32 @@
 #
 # Conditional build:
-%bcond_without	doc		# don't build doc
-%bcond_without	tests	# do not perform "make test"
+%bcond_without	tests	# test target
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 %define 	module	certifi
-Summary:	Trust Database for Humans
+Summary:	Python 2 package for providing Mozilla's CA Bundle
+Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Name:		python-%{module}
-Version:	2015.9.6.2
+Version:	2016.2.28
 Release:	1
 License:	ISC
 Group:		Libraries/Python
+#Source0Download: https://pypi.python.org/simple/certifi/
 Source0:	https://pypi.python.org/packages/source/c/certifi/certifi-%{version}.tar.gz
-# Source0-md5:	323884431b31aa0eccb5f8086d92196b
+# Source0-md5:	5d672aa766e1f773c75cfeccd02d3650
 URL:		https://certifi.io/
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.710
+BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel
-BuildRequires:	python3-modules
+BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	python3-setuptools
 %endif
-Requires:	python-modules
+Requires:	python-modules >= 1:2.5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,17 +36,27 @@ validating the trustworthiness of SSL certificates while verifying the
 identity of TLS hosts. It has been extracted from the Requests
 project.
 
+%description -l pl.UTF-8
+Certifi to ostrożnie utrzymywany zbiór głównych certyfikatów
+potwierdzających zaufanie do certyfikatów SSL podczas weryfikacji
+tożsamości hostów TLS. Pochodzi z projektu Requests.
+
 %package -n python3-%{module}
-Summary:	Trust Database for Humans
-Summary(pl.UTF-8):	-
+Summary:	Python 2 package for providing Mozilla's CA Bundle
+Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Group:		Libraries/Python
-Requires:	python3-modules
+Requires:	python3-modules >= 1:3.2
 
 %description -n python3-%{module}
 Certifi is a carefully curated collection of Root Certificates for
 validating the trustworthiness of SSL certificates while verifying the
 identity of TLS hosts. It has been extracted from the Requests
 project.
+
+%description -n python3-%{module} -l pl.UTF-8
+Certifi to ostrożnie utrzymywany zbiór głównych certyfikatów
+potwierdzających zaufanie do certyfikatów SSL podczas weryfikacji
+tożsamości hostów TLS. Pochodzi z projektu Requests.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -79,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc README.rst
+%doc LICENSE README.rst
 %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/%{module}-%{version}-py*.egg-info
 %endif
@@ -87,7 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc README.rst
+%doc LICENSE README.rst
 %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/%{module}-%{version}-py*.egg-info
 %endif
