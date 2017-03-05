@@ -8,13 +8,13 @@
 Summary:	Python 2 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Name:		python-%{module}
-Version:	2016.2.28
-Release:	2
+Version:	2017.1.23
+Release:	1
 License:	ISC
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/certifi/
-Source0:	https://pypi.python.org/packages/source/c/certifi/certifi-%{version}.tar.gz
-# Source0-md5:	5d672aa766e1f773c75cfeccd02d3650
+Source0:	https://files.pythonhosted.org/packages/source/c/certifi/certifi-%{version}.tar.gz
+# Source0-md5:	b72521a8badff5e89a8eabea586d79ab
 URL:		https://certifi.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
