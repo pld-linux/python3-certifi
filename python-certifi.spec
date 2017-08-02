@@ -5,16 +5,20 @@
 %bcond_without	python3 # CPython 3.x module
 
 %define 	module	certifi
+
+# pypi version does not include leading zeros in the date
+%define		tag 2017.07.27.1
+%define		version %(echo %{tag} | sed -e's/\\.0/./g')
+
 Summary:	Python 2 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Name:		python-%{module}
-Version:	2017.1.23
+Version:	%{version}
 Release:	1
 License:	ISC
 Group:		Libraries/Python
-#Source0Download: https://pypi.python.org/simple/certifi/
-Source0:	https://files.pythonhosted.org/packages/source/c/certifi/certifi-%{version}.tar.gz
-# Source0-md5:	b72521a8badff5e89a8eabea586d79ab
+Source0:	https://github.com/certifi/python-certifi/archive/%{tag}/%{name}-%{tag}.tar.gz
+# Source0-md5:	81757b03ea9aa7c4b889450db977d677
 URL:		https://certifi.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -59,7 +63,7 @@ potwierdzających zaufanie do certyfikatów SSL podczas weryfikacji
 tożsamości hostów TLS. Pochodzi z projektu Requests.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{name}-%{tag}
 
 %build
 %if %{with python2}
