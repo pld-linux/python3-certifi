@@ -1,36 +1,35 @@
 #
 # Conditional build:
-%bcond_without	tests	# test target
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 %define 	module	certifi
 
 # pypi version does not include leading zeros in the date
-%define		tag 2017.07.27.1
+%define		tag 2018.04.16
 %define		version %(echo %{tag} | sed -e's/\\.0/./g')
 
 Summary:	Python 2 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Name:		python-%{module}
 Version:	%{version}
-Release:	2
+Release:	1
 License:	ISC
 Group:		Libraries/Python
 Source0:	https://github.com/certifi/python-certifi/archive/%{tag}/%{name}-%{tag}.tar.gz
-# Source0-md5:	81757b03ea9aa7c4b889450db977d677
+# Source0-md5:	a718bc6ba25653a4e64d468789bbd7d2
 URL:		https://certifi.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel >= 1:3.2
+BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	python3-setuptools
 %endif
-Requires:	python-modules >= 1:2.5
+Requires:	python-modules >= 1:2.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,7 +48,7 @@ tożsamości hostów TLS. Pochodzi z projektu Requests.
 Summary:	Python 2 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.2
+Requires:	python3-modules >= 1:3.3
 
 %description -n python3-%{module}
 Certifi is a carefully curated collection of Root Certificates for
@@ -67,11 +66,11 @@ tożsamości hostów TLS. Pochodzi z projektu Requests.
 
 %build
 %if %{with python2}
-%py_build %{?with_tests:test}
+%py_build
 %endif
 
 %if %{with python3}
-%py3_build %{?with_tests:test}
+%py3_build
 %endif
 
 %install
