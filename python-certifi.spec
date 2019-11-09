@@ -13,7 +13,7 @@ Summary:	Python 2 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Name:		python-%{module}
 Version:	%{version}
-Release:	2
+Release:	3
 License:	MPL v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/certifi/python-certifi/releases/
