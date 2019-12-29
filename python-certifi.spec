@@ -6,19 +6,19 @@
 %define 	module	certifi
 
 # pypi version does not include leading zeros in the date
-%define		tag 2019.09.11
-%define		version %(echo %{tag} | sed -e's/\\.0/./g')
+%define		tag 2019.11.28
+%define		version %(echo %{tag} | sed -e 's/\\.0/./g')
 
 Summary:	Python 2 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 2 udostępniający bazę danych CA z Mozilli
 Name:		python-%{module}
 Version:	%{version}
-Release:	3
+Release:	1
 License:	MPL v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/certifi/python-certifi/releases/
 Source0:	https://github.com/certifi/python-certifi/archive/%{tag}/%{name}-%{tag}.tar.gz
-# Source0-md5:	512c6f42ff94f5296d6aca233d144480
+# Source0-md5:	36aadf4f77ce87e70a2238c6ed7fb009
 URL:		https://certifi.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
