@@ -8,7 +8,7 @@ Summary:	Python 3 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 3 udostępniający bazę danych CA z Mozilli
 Name:		python3-%{module}
 Version:	%{version}
-Release:	3
+Release:	4
 License:	MPL v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/certifi/python-certifi/tags
