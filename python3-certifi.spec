@@ -1,19 +1,19 @@
 %define 	module	certifi
 
 # pypi version does not include leading zeros in the date
-%define		tag 2024.02.02
+%define		tag 2025.01.31
 %define		version %(echo %{tag} | sed -e 's/\\.0/./g')
 
 Summary:	Python 3 package for providing Mozilla's CA Bundle
 Summary(pl.UTF-8):	Pakiet Pythona 3 udostępniający bazę danych CA z Mozilli
 Name:		python3-%{module}
 Version:	%{version}
-Release:	3
+Release:	1
 License:	MPL v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/certifi/python-certifi/tags
 Source0:	https://github.com/certifi/python-certifi/archive/%{tag}/python-certifi-%{tag}.tar.gz
-# Source0-md5:	8ffe29cdb77c407a7065b362fd82aa0f
+# Source0-md5:	b14dd314da7e1aa19edca37f6f70e788
 URL:		https://certifi.io/
 BuildRequires:	python3-devel >= 1:3.6
 BuildRequires:	python3-setuptools
