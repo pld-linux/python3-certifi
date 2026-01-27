@@ -1,7 +1,7 @@
 %define 	module	certifi
 
 # pypi version does not include leading zeros in the date
-%define		tag 2025.11.12
+%define		tag 2026.01.04
 %define		version %(echo %{tag} | sed -e 's/\\.0/./g')
 
 Summary:	Python 3 package for providing Mozilla's CA Bundle
@@ -13,7 +13,7 @@ License:	MPL v2.0
 Group:		Libraries/Python
 #Source0Download: https://github.com/certifi/python-certifi/tags
 Source0:	https://github.com/certifi/python-certifi/archive/%{tag}/python-certifi-%{tag}.tar.gz
-# Source0-md5:	6c174a7f9df803868a97b98053967197
+# Source0-md5:	4b26df84c6ae908463f592851a06c6e3
 URL:		https://certifi.io/
 BuildRequires:	python3-devel >= 1:3.7
 BuildRequires:	python3-setuptools >= 1:42.0.0
